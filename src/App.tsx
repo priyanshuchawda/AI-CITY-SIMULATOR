@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { SafeAreaView, StatusBar } from 'react-native';
+import Dashboard from './src/components/Dashboard';
+import CityView from './src/components/CityView';
+import CityActions from './src/components/CityActions';
+import AIMayorDashboard from './src/components/AIMayorDashboard';
+import CityControls from './src/components/CityControls';
 
-function App() {
+const Stack = createStackNavigator();
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <NavigationContainer>
+      <SafeAreaView style={{ flex: 1 }}>
+        <StatusBar barStyle="dark-content" />
+        <Stack.Navigator initialRouteName="Dashboard">
+          <Stack.Screen name="Dashboard" component={Dashboard} />
+          <Stack.Screen name="CityView" component={CityView} />
+          <Stack.Screen name="CityActions" component={CityActions} />
+          <Stack.Screen name="AIMayorDashboard" component={AIMayorDashboard} />
+          <Stack.Screen name="CityControls" component={CityControls} />
+        </Stack.Navigator>
+      </SafeAreaView>
+    </NavigationContainer>
   );
-}
+};
 
 export default App;

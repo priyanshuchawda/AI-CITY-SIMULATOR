@@ -1,0 +1,56 @@
+{
+  "name": "city-service",
+  "version": "1.0.0",
+  "description": "City service for AI City Simulator",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:watch": "jest --watch",
+    "test:integration": "jest --config jest.config.js --runInBand --testMatch='**/*.integration.test.js'",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "amqplib": "^0.10.4",
+    "axios": "^1.7.5",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.2.0",
+    "express-rate-limit": "^7.4.0",
+    "helmet": "^7.1.0",
+    "http-errors": "^2.0.0",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.8.0",
+    "mongoose": "^6.0.0",
+    "natural": "^8.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "redis": "^4.7.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "uuid": "^10.0.0",
+    "winston": "^3.14.2",
+    "xss": "^1.0.15"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.4",
+    "@babel/preset-typescript": "^7.15.0",
+    "babel-jest": "^27.5.1",
+    "jest": "^27.0.6"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(mongodb)/)"
+    ],
+    "testEnvironment": "node"
+  }
+}

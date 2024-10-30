@@ -1,0 +1,72 @@
+version: '3'
+services:
+  gateway:
+    build: ./gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - city-service
+      - ai-service
+      - economy-service
+      - user-service
+
+  city-service:
+    build: ./services/city-service
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - MONGODB_URI=mongodb://mongo:27017/city_db
+      - REDIS_HOST=redis
+    depends_on:
+      - mongo
+      - redis
+
+  ai-service:
+    build: ./services/ai-service
+    ports:
+      - "3002:3002"
+    environment:
+      - PORT=3002
+      - REDIS_HOST=redis
+    depends_on:
+      - redis
+
+  economy-service:
+    build: ./services/economy-service
+    ports:
+      - "3003:3003"
+    environment:
+      - PORT=3003
+      - MONGODB_URI=mongodb://mongo:27017/economy_db
+      - REDIS_HOST=redis
+    depends_on:
+      - mongo
+      - redis
+
+  user-service:
+    build: ./services/user-service
+    ports:
+      - "3004:3004"
+    environment:
+      - PORT=3004
+      - MONGODB_URI=mongodb://mongo:27017/user_db
+      - REDIS_HOST=redis
+    depends_on:
+      - mongo
+      - redis
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+
+volumes:
+  mongodb_data:

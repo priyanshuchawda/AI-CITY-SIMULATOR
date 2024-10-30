@@ -1,6 +1,32 @@
-# Getting Started with Create React App
+# AI-Powered Virtual City Simulator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Environment Setup
+
+To run this project, you need to set up environment variables for each service. Follow these steps:
+
+1. Navigate to each service directory:
+   - `ai-city-simulator-backend/services/city-service`
+   - `ai-city-simulator-backend/services/ai-service`
+   - `ai-city-simulator-backend/services/economy-service`
+   - `ai-city-simulator-backend/services/user-service`
+
+2. In each directory, create a `.env` file based on the `.env.example` file.
+
+3. Fill in the actual values for each environment variable in the `.env` files:
+
+   ```javascript
+   MONGODB_URI=mongodb://username:password@host:port/database
+   POSTGRESQL_URI=postgresql://username:password@host:port/database
+   NEO4J_URI=bolt://host:port
+   NEO4J_USER=your_neo4j_username
+   NEO4J_PASSWORD=your_neo4j_password
+   ```
+
+   Replace the placeholders with your actual database credentials and connection details.
+
+4. Ensure that the `.env` files are listed in your `.gitignore` to prevent committing sensitive information.
+
+These environment variables are crucial for connecting to the databases used in the project. Make sure they are correctly set before running any of the services.
 
 ## Available Scripts
 

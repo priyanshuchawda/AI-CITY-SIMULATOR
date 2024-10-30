@@ -21,3 +21,18 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Environment variables
+.env
+.env.development
+.env.staging
+.env.production
+
+# Add these lines for each service
+serivces/user-service/.env*
+serivces/city-service/.env*
+serivces/ai-service/.env*
+serivces/economy-service/.env*
+
+   # .gitignore
+   node_modules/

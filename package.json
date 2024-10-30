@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-navigation/native": "^6.1.18",
+    "@react-navigation/stack": "^6.4.1",
+    "@rollup/plugin-terser": "^0.4.4",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -10,17 +13,25 @@
     "@types/node": "^16.18.106",
     "@types/react": "^18.3.4",
     "@types/react-dom": "^18.3.0",
+    "express": "^4.19.2",
+    "natural": "^8.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-draggable": "^4.4.6",
     "react-scripts": "5.0.1",
+    "recharts": "^2.13.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "jest",
+    "test:integration": "jest --config jest.config.js --runInBand",
+    "eject": "react-scripts eject",
+    "lint:all": "powershell -Command \"cd ai-city-simulator-backend; Get-ChildItem -Directory services | ForEach-Object { Push-Location $_.FullName; npm run lint; Pop-Location }\"",
+    "test:all": "powershell -Command \"cd ai-city-simulator-backend; Get-ChildItem -Directory services | ForEach-Object { Push-Location $_.FullName; npm test; Pop-Location }\"",
+    "start:all": "powershell -Command \"cd ai-city-simulator-backend; Get-ChildItem -Directory services | ForEach-Object { Start-Process powershell -ArgumentList '-Command', 'cd $_.FullName; npm run dev' }\""
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +50,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.3.0",
+    "@typescript-eslint/parser": "^8.3.0",
+    "eslint-plugin-jest": "^28.8.1",
+    "jest": "^27.5.1",
+    "nodemon": "^3.1.4",
+    "supertest": "^7.0.0"
   }
 }
